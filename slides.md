@@ -159,7 +159,7 @@ pca = PCA()
 
 ---
 
-# API: Extreme case:
+# API? Extreme case:
 
 ```python
 * with scipy.linalg.set_backend(cu_linalg), \
