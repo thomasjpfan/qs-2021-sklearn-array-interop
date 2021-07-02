@@ -62,7 +62,7 @@ This talk on Github: thomasjpfan/qs-2021-sklearn-array-interop</a>
 ```python
 *sklearn.set_config(array_module=True)
 
-X = cupy.random.randn(4, 10)
+X = cupy.random.randn(100, 10)
 scalar = StandardScalar()
 
 # X_trans is a cupy array
@@ -71,7 +71,7 @@ X_trans = scalar.fit_transform(X)
 
 ### Context manager
 ```python
-X = cupy.random.randn(4, 10)
+X = cupy.random.randn(100, 10)
 scalar = StandardScalar()
 
 *with sklearn.config_context(array_module=True):
