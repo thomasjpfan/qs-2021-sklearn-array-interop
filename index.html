@@ -137,7 +137,7 @@ scale(..., array_module=True)
 import uarray as ua
 import cupy
 
-ua.register_backend(cupy)
+*ua.register_backend(cupy)
 
 X = cupy.random.randn(100, 10)
 pca = PCA()
