@@ -161,7 +161,18 @@ ua.register_backend(cupy)
 X = cupy.random.randn(100, 10)
 pca = PCA()
 
-with scipy.fft.set_backend(cu_fft)
+*with scipy.linalg.set_backend(cu_linalg):
+    # X_trans is a cupy array
+    X_trans = pca.fit_transform(X)
+```
+
+---
+
+# API: Extreme case:
+
+```python
+* with scipy.linalg.set_backend(cu_linalg), \
+*      scipy.fft.set_backend(cu_fft):
     # X_trans is a cupy array
     X_trans = pca.fit_transform(X)
 ```
