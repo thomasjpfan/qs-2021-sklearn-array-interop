@@ -115,10 +115,11 @@ scale(..., array_module=True)
 # `uarray`
 
 - User story in [NEP 31](https://numpy.org/neps/nep-0031-uarray.html) makes sense.
-- Should I experiment with `unumpy` + scikit-learn?
-- Domain for scipy is going to be `numpy.scipy.linalg`?
 
-## API?
+---
+
+# API
+## If `numpy.scipy.linalg` is in the namespace
 
 ```python
 import uarray as ua
@@ -126,9 +127,29 @@ import cupy
 
 ua.register_backend(cupy)
 
-X = cupy.random.randn(4, 10)
-scalar = StandardScalar()
+X = cupy.random.randn(100, 10)
+pca = PCA()
 
 # X_trans is a cupy array
-X_trans = scalar.fit_transform(X)
+X_trans = pca.fit_transform(X)
+```
+
+---
+
+# API?
+## If `numpy.scipy.linalg` is not in the namespace
+
+```python
+import uarray as ua
+import cupy
+import scipy
+
+ua.register_backend(cupy)
+
+X = cupy.random.randn(100, 10)
+pca = PCA()
+
+with scipy.fft.set_backend(cu_fft)
+    # X_trans is a cupy array
+    X_trans = pca.fit_transform(X)
 ```
